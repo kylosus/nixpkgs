@@ -82,9 +82,11 @@ let
         "sparc"
         "xtensa"
       ];
-      needsUbootTools =
-        lib.elem stdenv.hostPlatform.linuxArch linuxPlatformsUsingUImage
-      ;
+      #needsUbootTools =
+      #  lib.elem stdenv.hostPlatform.linuxArch linuxPlatformsUsingUImage
+      #;
+
+      needsUbootTools = true;
 
       config = let attrName = attr: "CONFIG_" + attr; in {
         isSet = attr: hasAttr (attrName attr) config;
@@ -112,6 +114,7 @@ let
         pahole
         perl
         libelf
+        ubootTools
         # module makefiles often run uname commands to find out the kernel version
         (buildPackages.deterministic-uname.override { inherit modDirVersion; })
       ]
@@ -133,7 +136,7 @@ let
       inherit src;
 
       depsBuildBuild = [ buildPackages.stdenv.cc ];
-      nativeBuildInputs = [ perl bc nettools openssl rsync gmp libmpc mpfr zstd python3Minimal kmod ]
+      nativeBuildInputs = [ perl bc nettools openssl rsync gmp libmpc mpfr zstd python3Minimal kmod ubootTools ubootTools ]
                           ++ optional  needsUbootTools ubootTools
                           ++ optional  (lib.versionOlder version "5.8") libelf
                           ++ optionals (lib.versionAtLeast version "4.16") [ bison flex ]
