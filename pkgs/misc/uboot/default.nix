@@ -63,7 +63,8 @@ let
 
     src = if src == null then defaultSrc else src;
 
-    patches = (if patches == null then [./0001-configs-rpi-allow-for-bigger-kernels.patch] else []) ++ extraPatches;
+    #patches = (if patches == null then [./0001-configs-rpi-allow-for-bigger-kernels.patch] else []) ++ extraPatches;
+    patches = extraPatches;
 
     postPatch = ''
       ${lib.concatMapStrings (script: ''
