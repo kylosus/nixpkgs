@@ -46,6 +46,7 @@ let
   buildUBoot = lib.makeOverridable ({
     version ? null
   , src ? null
+  , patches ? null
   , filesToInstall
   , pythonScriptsToInstall ? { }
   , installDir ? "$out"
@@ -62,9 +63,7 @@ let
 
     src = if src == null then defaultSrc else src;
 
-    patches = [
-      ./0001-configs-rpi-allow-for-bigger-kernels.patch
-    ] ++ extraPatches;
+    patches = (if patches == null then [./0001-configs-rpi-allow-for-bigger-kernels.patch] else []) ++ extraPatches;
 
     postPatch = ''
       ${lib.concatMapStrings (script: ''
