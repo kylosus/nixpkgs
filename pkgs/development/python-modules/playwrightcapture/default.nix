@@ -21,7 +21,7 @@
 
 buildPythonPackage rec {
   pname = "playwrightcapture";
-  version = "1.24.3";
+  version = "1.24.5";
   pyproject = true;
 
   disabled = pythonOlder "3.8";
@@ -30,7 +30,7 @@ buildPythonPackage rec {
     owner = "Lookyloo";
     repo = "PlaywrightCapture";
     rev = "refs/tags/v${version}";
-    hash = "sha256-T/6WfDFW4m9bB09mBwKw1I0iQ0HF0I2Pzf2MXExJVGY=";
+    hash = "sha256-3xbjcvBx5pHlCwqAVJUpiGsa4s9lScORlEB4YLfkvv4=";
   };
 
   pythonRelaxDeps = [

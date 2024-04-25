@@ -46,7 +46,6 @@ with lib.maintainers; {
   bazel = {
     members = [
       mboes
-      marsam
       uri-canva
       cbley
       olebedev
@@ -518,6 +517,7 @@ with lib.maintainers; {
       cpages
       dschrempf
       edwtjo
+      kazenyuk
       minijackson
       peterhoeg
       sephalon
@@ -573,6 +573,9 @@ with lib.maintainers; {
       RossComputerGuy
       rrbutani
       sternenseemann
+    ];
+    githubTeams = [
+      "llvm"
     ];
     scope = "Maintain LLVM package sets and related packages";
     shortName = "LLVM";
@@ -732,7 +735,6 @@ with lib.maintainers; {
   node = {
     members = [
       lilyinstarlight
-      marsam
       winter
     ];
     scope = "Maintain Node.js runtimes and build tooling.";
@@ -902,7 +904,6 @@ with lib.maintainers; {
 
   ruby = {
     members = [
-      marsam
     ];
     scope = "Maintain the Ruby interpreter and related packages.";
     shortName = "Ruby";
